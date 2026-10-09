@@ -255,10 +255,10 @@ svg.grid[data-click]{cursor:crosshair}
     },
     function lineFormula(l) {
       const a = l === 0 ? pick([1, 2, 3]) : nz(-3, 3), b = l === 0 ? 0 : ri(-4, 4);
-      return { type: 'multi', fields: ['a (y goes up/down by ... when x goes up 1)', 'b (where the line crosses the y-axis)'], ans: [a, b], correct: [String(a), String(b)],
-        html: '<p>The line has the formula <b>y = ax + b</b>. Find <b>a</b> and <b>b</b>.</p>' + grid({ xmin: -5, xmax: 5, ymin: -8, ymax: 8, curves: [{ f: x => ev(a, b, x) }], pts: [{ x: 0, y: b, color: '#16803c' }, { x: 1, y: a + b, color: '#16803c' }] }),
-        hint: 'b = the y-value at x = 0 (green point). a = how much y changes if you go 1 to the right (compare the two green points).',
-        steps: 'At x = 0: y = ' + f(b) + ', so b = ' + f(b) + '.<br>At x = 1: y = ' + f(a + b) + ', so a = ' + f(a + b) + ' − ' + par(b) + ' = ' + f(a) + '.<br>y = ' + linTxt(a, b) };
+      return { type: 'multi', fields: ['m (y goes up/down by ... when x goes up 1)', 'b (where the line crosses the y-axis)'], ans: [a, b], correct: [String(a), String(b)],
+        html: '<p>The line has the formula <b>y = mx + b</b>. Find <b>m</b> and <b>b</b>.</p>' + grid({ xmin: -5, xmax: 5, ymin: -8, ymax: 8, curves: [{ f: x => ev(a, b, x) }], pts: [{ x: 0, y: b, color: '#16803c' }, { x: 1, y: a + b, color: '#16803c' }] }),
+        hint: 'b = the y-value at x = 0 (green point). m = how much y changes if you go 1 to the right (compare the two green points).',
+        steps: 'At x = 0: y = ' + f(b) + ', so b = ' + f(b) + '.<br>At x = 1: y = ' + f(a + b) + ', so m = ' + f(a + b) + ' − ' + par(b) + ' = ' + f(a) + '.<br>y = ' + linTxt(a, b) };
     },
     function plotLine(l) {
       const a = l === 0 ? ri(1, 2) : nz(-2, 2), b = l === 0 ? 0 : ri(-3, 3);
@@ -318,10 +318,10 @@ svg.grid[data-click]{cursor:crosshair}
     },
     function findFormula(l) {
       const a = l === 0 ? ri(1, 4) : nz(-4, 4), b = ri(-5, 6), xs = l === 0 ? [0, 1, 2, 3, 4] : l === 1 ? [1, 2, 3, 4, 5] : [2, 3, 4, 5, 6];
-      return { type: 'multi', fields: ['a (the change in y per step of 1 in x)', 'b (y when x = 0)'], ans: [a, b], correct: [String(a), String(b)],
-        html: '<p>This table belongs to a linear relation <b>y = ax + b</b>. Find <b>a</b> and <b>b</b>.</p>' + tbl(xs, xs.map(x => ev(a, b, x))),
-        hint: 'a is the change in y for each step of 1 in x. Then go back (or forward) to x = 0 to find b.',
-        steps: 'a = ' + f(a) + '. From x = ' + xs[0] + ' (y = ' + f(ev(a, b, xs[0])) + ') go back to x = 0: b = ' + f(b) + '.<br>y = ' + linTxt(a, b) };
+      return { type: 'multi', fields: ['m (the change in y per step of 1 in x)', 'b (y when x = 0)'], ans: [a, b], correct: [String(a), String(b)],
+        html: '<p>This table belongs to a linear relation <b>y = mx + b</b>. Find <b>m</b> and <b>b</b>.</p>' + tbl(xs, xs.map(x => ev(a, b, x))),
+        hint: 'm is the change in y for each step of 1 in x. Then go back (or forward) to x = 0 to find b.',
+        steps: 'm = ' + f(a) + '. From x = ' + xs[0] + ' (y = ' + f(ev(a, b, xs[0])) + ') go back to x = 0: b = ' + f(b) + '.<br>y = ' + linTxt(a, b) };
     },
     function changePer(l) {
       const a = nz(-6, 6), b = ri(-8, 8), down = l === 2 && Math.random() < .5, v = down ? 'down 1' : 'up 1';
